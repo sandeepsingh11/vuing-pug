@@ -3,13 +3,32 @@ html
 	include ./header.pug
 
 	body
-		h1= title
+		#mainContent
+			h1= title
 
-		h2 We are Vuing Pug for the first time!
+			h2 We are Vuing Pug for the first time!
 
-		#friends
-			friends-list(:friends='friendList')
+			#friends
+				friends-list(:friends='friendList')
 
-		p how awesome is Vuing Pug?!
+			#pokemon
+				h2 Here is another list
+				ul
+					pokemon-list(
+						v-for='pokemon in allPokemons', 
+						v-bind:pokemon='pokemon'
+						)
+
+				#addPkmn
+					input(
+						v-model='edit',
+						placeholder='add pokemon'
+						)
+					// p {{ edit }}
+					br
+					button(v-on:click='add') Add Pokemon
+					button(v-on:click='remove') Remove Pokemon
+
+			h4 How awesome is Vuing Pug?!
 
 		include ./footer.pug
